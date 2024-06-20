@@ -1,17 +1,26 @@
 import * as cdk from "aws-cdk-lib";
+import * as apigw from "aws-cdk-lib/aws-apigateway";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import type { Construct } from "constructs";
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class NextHonoBackendStack extends cdk.Stack {
-	// biome-ignore lint/complexity/noUselessConstructor: <explanation>
 	constructor(scope: Construct, id: string, props?: cdk.StackProps) {
 		super(scope, id, props);
 
-		// The code that defines your stack goes here
-
-		// example resource
-		// const queue = new sqs.Queue(this, 'NextHonoBackendQueue', {
-		//   visibilityTimeout: cdk.Duration.seconds(300)
-		// });
+		const fn = new NodejsFunction(this, "lambda", {
+			entry: "lambda/index.ts",
+			handler: "handler",
+			runtime: lambda.Runtime.NODEJS_20_X,
+		});
+		fn.addFunctionUrl({
+			authType: lambda.FunctionUrlAuthType.NONE,
+		});
+		new apigw.LambdaRestApi(this, "next-hono-backend", {
+			handler: fn,
+			deployOptions: {
+				stageName: "dev",
+			},
+		});
 	}
 }
