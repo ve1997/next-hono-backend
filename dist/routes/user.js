@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userRoute = void 0;
+const hono_1 = require("hono");
+const app = new hono_1.Hono();
+const routes = app
+    .get("/", (c) => c.text("Hello, userRoute!"))
+    .get("/:id", (c) => {
+    const { id } = c.req.param();
+    return c.text(`Your ID is ${id}!`);
+});
+exports.userRoute = routes;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXNlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL2xhbWJkYS9yb3V0ZXMvdXNlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSwrQkFBNEI7QUFFNUIsTUFBTSxHQUFHLEdBQUcsSUFBSSxXQUFJLEVBQUUsQ0FBQztBQUN2QixNQUFNLE1BQU0sR0FBRyxHQUFHO0tBQ2hCLEdBQUcsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxDQUFDLEVBQUUsRUFBRSxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMsbUJBQW1CLENBQUMsQ0FBQztLQUM1QyxHQUFHLENBQUMsTUFBTSxFQUFFLENBQUMsQ0FBQyxFQUFFLEVBQUU7SUFDbEIsTUFBTSxFQUFFLEVBQUUsRUFBRSxHQUFHLENBQUMsQ0FBQyxHQUFHLENBQUMsS0FBSyxFQUFFLENBQUM7SUFDN0IsT0FBTyxDQUFDLENBQUMsSUFBSSxDQUFDLGNBQWMsRUFBRSxHQUFHLENBQUMsQ0FBQztBQUNwQyxDQUFDLENBQUMsQ0FBQztBQUVlLDJCQUFTIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSG9ubyB9IGZyb20gXCJob25vXCI7XG5cbmNvbnN0IGFwcCA9IG5ldyBIb25vKCk7XG5jb25zdCByb3V0ZXMgPSBhcHBcblx0LmdldChcIi9cIiwgKGMpID0+IGMudGV4dChcIkhlbGxvLCB1c2VyUm91dGUhXCIpKVxuXHQuZ2V0KFwiLzppZFwiLCAoYykgPT4ge1xuXHRcdGNvbnN0IHsgaWQgfSA9IGMucmVxLnBhcmFtKCk7XG5cdFx0cmV0dXJuIGMudGV4dChgWW91ciBJRCBpcyAke2lkfSFgKTtcblx0fSk7XG5cbmV4cG9ydCB7IHJvdXRlcyBhcyB1c2VyUm91dGUgfTtcbiJdfQ==

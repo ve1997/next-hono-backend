@@ -10,3 +10,7 @@ cdk.out
 # env files
 .env
 .env.*.local
+
+# dist
+!dist/**/*.js
+!dist/**/*.d.ts
